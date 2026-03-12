@@ -1,0 +1,27 @@
+from .rules_engine import evaluate_rules
+from .external_service import verify_document
+
+def run_workflow(data, config):
+
+    rules = config["rules"]
+
+    passed, result = evaluate_rules(data, rules)
+
+    if not passed:
+        return {
+            "status": "rejected",
+            "reason": result
+        }
+
+    try:
+        verify_document()
+    except:
+        return {
+            "status": "retry",
+            "reason": "external service failed"
+        }
+
+    return {
+        "status": "approved",
+        "trace": result
+    }
