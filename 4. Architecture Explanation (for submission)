@@ -1,0 +1,34 @@
+1
+Core components:
+
+Input Layer
+
+REST API
+
+Validates incoming request
+
+Workflow Engine
+
+Executes stages
+
+Handles success / reject / retry
+
+Rules Engine
+
+Mandatory checks
+
+Threshold checks
+
+State Manager
+
+Request lifecycle tracking
+
+Audit System
+
+Decision trace
+
+Rule evaluation logs
+
+External Dependency
+
+Simulated verification API
