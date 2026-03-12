@@ -1,0 +1,19 @@
+def evaluate_rules(data, rules):
+
+    trace = []
+
+    for rule in rules:
+
+        if rule["type"] == "mandatory":
+            for field in rule["fields"]:
+                if field not in data:
+                    return False, f"{field} missing"
+
+        if rule["type"] == "threshold":
+            value = data.get(rule["field"], 0)
+            if value < rule["min"]:
+                return False, f"{rule['field']} below threshold"
+
+        trace.append(rule["name"])
+
+    return True, trace
