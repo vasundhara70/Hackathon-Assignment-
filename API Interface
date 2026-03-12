@@ -1,0 +1,30 @@
+from fastapi import FastAPI
+from uuid import uuid4
+import json
+
+from .workflow_executor import run_workflow
+from .config_loader import load_config
+
+app = FastAPI()
+
+config = load_config()
+
+processed_requests = {}
+
+@app.post("/process")
+
+def process_request(data: dict):
+
+    request_id = data.get("request_id")
+
+    if request_id in processed_requests:
+        return {
+            "message": "duplicate request",
+            "result": processed_requests[request_id]
+        }
+
+    result = run_workflow(data, config)
+
+    processed_requests[request_id] = result
+
+    return result
