@@ -1,0 +1,9 @@
+import random
+
+def verify_document():
+
+    # simulate external API
+    if random.random() < 0.8:
+        return True
+    else:
+        raise Exception("External verification failed")
