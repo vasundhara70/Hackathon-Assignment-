@@ -1,0 +1,30 @@
+{
+  "workflow_name": "application_approval",
+
+  "rules": [
+    {
+      "name": "mandatory_fields",
+      "type": "mandatory",
+      "fields": ["name", "age", "salary"]
+    },
+    {
+      "name": "age_check",
+      "type": "threshold",
+      "field": "age",
+      "min": 18
+    },
+    {
+      "name": "salary_check",
+      "type": "threshold",
+      "field": "salary",
+      "min": 20000
+    }
+  ],
+
+  "workflow_stages": [
+    "start",
+    "rule_evaluation",
+    "external_verification",
+    "decision"
+  ]
+}
