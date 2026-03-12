@@ -1,0 +1,19 @@
+from app.workflow_executor import run_workflow
+
+def test_happy_path():
+
+    data = {
+        "name": "John",
+        "age": 25,
+        "salary": 30000
+    }
+
+    config = {
+        "rules": [
+            {"type":"threshold","field":"age","min":18}
+        ]
+    }
+
+    result = run_workflow(data, config)
+
+    assert result["status"] in ["approved","retry"]
