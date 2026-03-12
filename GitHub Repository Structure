@@ -1,0 +1,23 @@
+workflow-decision-system/
+│
+├── app/
+│   ├── main.py
+│   ├── models.py
+│   ├── schemas.py
+│   ├── database.py
+│   ├── engine.py
+│   ├── rules_engine.py
+│   ├── workflow_executor.py
+│   ├── audit.py
+│   ├── external_service.py
+│   └── config_loader.py
+│
+├── configs/
+│   └── workflow_config.json
+│
+├── tests/
+│   └── test_workflow.py
+│
+├── README.md
+├── requirements.txt
+└── architecture.md
