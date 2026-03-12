@@ -1,0 +1,12 @@
+def log_action(db, request_id, action, details):
+
+    from .models import AuditLog
+
+    log = AuditLog(
+        request_id=request_id,
+        action=action,
+        details=details
+    )
+
+    db.add(log)
+    db.commit()
